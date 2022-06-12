@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- JAi SRi RAm -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSR</title>
+  <script src="https://kit.fontawesome.com/da19b7556f.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+.scroll-up-btn {
+  color: #fff;
+  background: #3685eb;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  z-index: 999;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+}
+.scroll-up-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 30px;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 30px 0;
+  font-family: "Ubuntu";
+  transition: all 0.3s ease;
+  z-index: 99;
+  /* background: crimson; */
+}
+.navbar.sticky {
+  padding: 15px 0;
+  background: #111;
+}
+.max-width {
+  max-width: 1300px;
+  padding: 0 80px;
+  margin: auto;
+}
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.navbar .logo a span {
+  color: #111;
+  transition: all 0.3s ease;
+}
+.navbar.sticky .logo a span {
+  color: #fff;
+}
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+.navbar .menu li a {
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+}
+.navbar .menu li a:hover {
+  color: #111;
+}
+.navbar.sticky .menu li a:hover {
+  color: #3685eb;
+}
+.menu-btn {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+.home {
+  display: flex;
+  background: url("/static/Violet\ Professional\ Gradient\ Pitch\ Deck\ for\ Nonprofits\ Pitch\ Presentation\ \(3\).jpg") no-repeat center;
+  height: 100vh;
+  /* width: 100vw; */
+  color: #fff;
+  min-height: 500px;
+  font-family: "Ubuntu";
+}
+.home .max-width {
+  margin: auto 0 auto 40px;
+}
+/* .home .home-content {
+  height: 250px;
+} */
+.home .home-content .text-1 {
+  font-size: 27px;
+}
+.home .home-content .text-2 {
+  font-size: 75px;
+  font-weight: 600;
+  margin: -3px;
+}
+.home .home-content .text-3 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+.home .home-content .text-1 span {
+  
+  color: #111;
+  font-weight: 500;
+}
+.home .home-content a {
+  display: inline-block;
+  color: #fff;
+  background: #3685eb;
+  font-size: 25px;
+  padding: 12px 36px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: solid 2px #3685eb;
+  transition: all 0.3s ease;
+}
+.home .home-content a:hover {
+  color: #fff;
+  background: none;
+}
+/* about styling */
+section {
+  padding: 100px 0;
+}
+.about,
+.demo,
+.video,
+.contact,
+.footer, .form {
+  font-family: "Poppins";
+  background: url(/static/new.jpg);
+}
+section .title {
+  position: relative;
+  font-family: "Ubuntu";
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 60px;
+  padding: 20px;
+}
+.about .about-content .left img {
+  height: 400px;
+  width: 400px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+section .title::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: "";
+  width: 180px;
+  height: 3px;
+  background: #111;
+  transform: translateX(-50%);
+}
+section .title::after {
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  font-size: 20px;
+  color: #3685eb;
+  padding: 5px;
+  background: #fff;
+  transform: translateX(-50%);
+}
+/* .about .title::after {
+  content: "Who I am";
+} */
+
+.about .about-content,
+.demo .demo-content,
+.video .video-content,
+.contact .contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.about .about-content .left {
+  width: 45%;
+}
+.about .about-content .right {
+  width: 55%;
+}
+.about .about-content .right .text {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.about .about-content .right .text span {
+  color: #3685eb;
+}
+.about .about-content .right .text p {
+  text-align: justify;
+}
+.about .about-content .right a {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  background: #3685eb;
+  font-size: 20px;
+  padding: 10px 30px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: solid 2px #3685eb;
+  transition: all 0.3s ease;
+}
+.about .about-content .right a:hover {
+  color: #111;
+  background: none;
+}
+/* demo section */
+.demo .title::before {
+  background-color: #fff;
+}
+
+.demo {
+  background: url(/static/new.jpg);
+  color: #fff;
+}
+.demo .demo-content .card {
+  width: 100%;
+  background: none;
+  border: solid 3px #3685eb;
+  text-align: center;
+  border-radius: 6px;
+  padding: 20px 25px;
+  cursor: pointer;
+  transform: all 0.3s ease;
+}
+.demo .demo-content .card:hover {
+  background: #3685eb;
+  
+}
+.demo .demo-content .card .box {
+  transform: all 0.5s ease;
+}
+.demo .demo-content .card:hover .box {
+  transform: scale(1.05);
+}
+.demo .demo-content .card i {
+  font-size: 50px;
+  color: #3685eb;
+  transition: color 0.3s ease;
+}
+.demo .demo-content .card:hover i {
+  color: #fff;
+}
+.demo .demo-content .card .text {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 0 7px 0;
+}
+.video .video-content .column {
+    width: calc(50% - 30px);
+  }
+  .video .video-content .left a:hover {
+    color: #3685eb;
+    background: none;
+  }
+  .video .video-content .right .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .video .video-content .right {
+    font-weight: 600;
+    font-size: 18px;
+  }
+/* video */
+
+
+/* .video .video-content .column {
+  width: calc(50% - 30px);
+}
+.video .video-content .left .text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.video .video-content .left p {
+  text-align: justify;
+}
+.video .video-content .left a {
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  background: #3685eb;
+  font-size: 15px;
+  padding: 7px 25px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: solid 2px #111;
+  transition: all 0.3s ease;
+}
+.video .video-content .left a:hover {
+  color: #3685eb;
+  background: none;
+}
+
+.video .video-content .right .bars {
+  margin-bottom: 15px;
+}
+.video .video-content .right .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.video .video-content .right {
+  font-weight: 600;
+  font-size: 18px;
+}
+.video .video-content .right .line {
+  height: 5px;
+  width: 100%;
+  background: lightgray;
+  position: relative;
+}
+.video .video-content .right .line::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 80%;
+  left: 0;
+  top: 0;
+  background: #3685eb;
+}
+
+/* .contact */
+.contact {
+  background: url(/static/new.jpg);
+  color: #fff;
+}
+.contact .title::before {
+  background: #fff;
+}
+
+.contact .contact-content .column {
+  width: calc(50% - 30px);
+}
+.contact .contact-content .text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.contact .contact-content .left p {
+  text-align: justify;
+}
+.contact .contact-content .left .icons {
+  margin: 10px 0;
+}
+.contact .contact-content .row {
+  display: flex;
+  height: 65px;
+  align-items: center;
+}
+.contact .contact-content .row .info {
+  margin-left: 30px;
+}
+.contact .contact-content .row i {
+  color: #3685eb;
+  font-size: 25px;
+}
+.contact .contact-content .info .head {
+  font-weight: 500;
+}
+.contact .contact-content .info .sub-title {
+  color: rgb(212, 200, 200);
+}
+.contact .right form .fields {
+  display: flex;
+}
+.contact .right form .field input {
+  height: 100%;
+  width: 100%;
+}
+.contact .right form .field,
+.contact .right form .fields .field {
+  height: 45px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.contact .right form .name {
+  margin-right: 10px;
+}
+.contact .right form .email {
+  margin-left: 10px;
+}
+.contact .right form .field input,
+.contact .right form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  /* font-size: 18px; */
+  border: 1px solid lightgray;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.contact .right form .textarea textarea {
+  padding-top: 10px;
+  resize: none;
+}
+.contact .right form .button {
+  height: 47px;
+  width: 170px;
+}
+.contact .right form .button button {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3685eb;
+  background-color: #3685eb;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.contact .right form .button button:hover {
+  background: none;
+  color: #fff;
+}
+/* footer */
+footer {
+  background: #fff;
+  padding: 20px 23px;
+  text-align: center;
+}
+footer span a {
+  color: #3685eb;
+}
+
+/* Form */
+.form{
+display: flex;
+justify-content: center;
+align-items: center;
+background: url(/static/new.jpg);
+}
+.container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.form .container .user-details{
+  padding:15px;
+  display:flex;
+  justify-content: space-between;
+}
+.form .button{
+  height: 45px;
+  width:5rem;
+  margin: auto;
+  padding:auto;
+  
+
+}
+.form .button input{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.form .button input:hover{
+ /* transform: scale(0.99); */
+ background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+ }
+/*  */
+/* responsiveness */
+@media (max-width: 1300px) {
+  .home .max-width {
+    margin-left: 0px;
+  }
+}
+@media (max-width: 1104px) {
+  .about .about-content .left img {
+    height: 350px;
+    width: 350px;
+    /* object-fit: contain;
+    border-radius: 20px; */
+  }
+}
+@media (max-width: 990px) {
+  .home .max-width {
+    padding: 0 50px;
+  }
+}
+@media (max-width: 947px) {
+  .max-width {
+    padding: 0 50px;
+  }
+  .navbar .menu {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    background: #111;
+    text-align: center;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+  }
+  .navbar .menu.active {
+    left: 0;
+  }
+  .menu-btn i.active:before {
+    content: "\f00d";
+  }
+  .navbar .menu li {
+    display: block;
+  }
+  .navbar .menu li a {
+    display: inline-block;
+    margin: 20px 0;
+    font-size: 25px;
+  }
+  .menu-btn {
+    display: inline-block;
+    z-index: 999;
+  }
+  .home .home-content .text-2 {
+    font-size: 70px;
+  }
+  .home .home-content .text-3 {
+    font-size: 35px;
+  }
+  .home .home-content a {
+    font-size: 23px;
+    padding: 10px 30px;
+  }
+  .about .about-content .column {
+    width: 100%;
+  }
+  .about .about-content .left {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 60px;
+  }
+  .about .about-content .right {
+    flex: 100%;
+  }
+  .max-width {
+    max-width: 800px;
+  }
+  .demo .demo-content .card {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+  .video .video-content .column,
+  .contact .contact-content .column {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  .home .home-content .text-1 {
+    font-weight: 500;
+    color:#111
+  }
+  .home .home-content .text-1 span {
+    
+    color: #111;
+   
+  }
+}
+@media (max-width: 690px) {
+  .max-width {
+    padding: 0 23px;
+  }
+  .home .home-content .text-2 {
+    font-size: 60px;
+  }
+  .home .home-content .text-3 {
+    font-size: 32px;
+  }
+  .home .home-content a {
+    font-size: 20px;
+  }
+  .demo .demo-content .card,
+  .video .video-content .column {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .home .home-content .text-2 {
+    font-size: 50px;
+  }
+  .home .home-content .text-3 {
+    font-size: 27px;
+  }
+  form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  .container .content .category{
+    flex-direction: column;
+  }
+
+  
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+  </div>
+  <nav class="navbar">
+    <div class="max-width">
+      <div class="logo">
+        <a href="#">DE<span>FO</span></a>
+      </div>
+      <ul class="menu">
+        <li><a href="#" class="menu-btn">Home</a></li>
+        <li><a href="#about" class="menu-btn">About</a></li>
+        <li><a href="#demo" class="menu-btn">Demo</a></li>
+        <li><a href="#video" class="menu-btn">Video</a></li>
+        <li><a href="#contact" class="menu-btn">Contact</a></li>
+      </ul>
+      <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+  </nav>
+  <section class="home" id="home">
+    <div class="max-width">
+      <div class="home-content">
+        <div class="text-1">Predict the demand</div>
+        <div class="text-1">of Your favourite Cusinie </div>
+        <div class="text-1">by our <span>DEFO Algorithm</span></div>
+        <a href="#about">Know More</a>
+      </div>
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="max-width">
+      <h2 class="title">About Project</h2>
+      <div class="about-content">
+        <div class="column left">
+          <img src="/static/chart.jpg" alt="chart_rep">
+        </div>
+        <div class="column right">
+          <div class="text">Demand Prediction of Cuisine</div>
+          <p>
+            Forecasting demand for cuisine on a daily basis so restaurant management can handle ingredients more efficiently by making them available based on requirement. It helps management people to come up with effective planning to improve their business by reducing wastage of  ingredients and employee management. They can meet customer demand.
+
+          </p>
+          <a href="#demo">See How it works! </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- demo -->
+  <section class="demo" id="demo">
+    <div class="max-width">
+      <h2 class="title">Demo Websites</h2>
+      <div class="demo-content">
+        <div class="card">
+          <a href="/predict">
+          <div class="box">
+            <i class="fas fa-code"></i>
+    
+          <div class="text"><a href="/predict">Owner Dashboard</a></div>
+            <p>Dashboard for knowing the demand forecast of a paticular Cusinie based on the past historical data. Users are required to fill up an easy and userfriendly query process in order to estimate the demand of the paticular Cusinie.</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- video -->
+  <section class="video" id="video">
+    <div class="max-width">
+      <h2 class="title">
+        Video Explanation
+      </h2>
+      <div class="video-content">
+        
+        <div class="column left">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/CPwImk-t54I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         </div>
+        <div class="column right">
+          <div class="info">
+          Here is a video presntation which includes the whole process involved in developing this process and a quick guide on how one can use this model to forecast the demand of paticular Cusinie.
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+  </section>
+  
+  <!-- contact
+    . -->
+
+  <section class="contact" id="contact">
+    <div class="max-width">
+      <h2 class="title">Contact Us</h2>
+      <div class="contact-content">
+        <div class="column left">
+          <div class="text">Get in Touch </div>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto consequatur quidem nobis dolore? Dolore,
+            quam molestiae? Provident impedit veniam temporibus?</p>
+          <div class="icons">
+            <div class="row">
+              <i class="fas fa-user"></i>
+              <div class="info">
+                <div class="head">Name</div>
+                <div class="sub-title">Team DOLO</div>
+              </div>
+            </div>
+            <div class="row">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="info">
+                <div class="head">Address</div>
+                <div class="sub-title">Hyderabad,India</div>
+              </div>
+            </div>
+            <div class="row">
+              <i class="fas fa-envelope"></i>
+              <div class="info">
+                <div class="head">Email</div>
+                <div class="sub-title">ramarapuanish@gmail.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column right">
+          <div class="text">Message Us</div>
+          <form action="#">
+            <div class="fields">
+              <div class="field name">
+                <input type="text" placeholder="Name">
+              </div>
+              <div class="field email">
+                <input type="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Subject">
+            </div>
+            <div class="field textarea">
+              <textarea placeholder="Describe project..." id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="button">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer>
+    <span>Created By <a href="#">Team DEFO</a>| <span class="far fa-copyright"></span> 2022 All rights
+      Reserved</span>
+  </footer>
+</body>
+<script src="script.js"></script>
+
+</html>

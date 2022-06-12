@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .scroll-up-btn {
+    color: #fff;
+    background: #3685eb;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    z-index: 999;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .scroll-up-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    bottom: 30px;
+  }
+  
+  .navbar {
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-family: "Ubuntu";
+    transition: all 0.3s ease;
+    z-index: 99;
+    /* background: crimson; */
+  }
+  .navbar.sticky {
+    padding: 15px 0;
+    background: #111;
+  }
+  .max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+  }
+  .navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar .logo a {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  .navbar .logo a span {
+    color: #111;
+    transition: all 0.3s ease;
+  }
+  .navbar.sticky .logo a span {
+    color: #fff;
+  }
+  .navbar .menu li {
+    list-style: none;
+    display: inline-block;
+  }
+  .navbar .menu li a {
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+  }
+  .navbar .menu li a:hover {
+    color: #111;
+  }
+  .navbar.sticky .menu li a:hover {
+    color: #3685eb;
+  }
+  .menu-btn {
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+  }
+  .home {
+    display: flex;
+    background: url("/static/Violet\ Professional\ Gradient\ Pitch\ Deck\ for\ Nonprofits\ Pitch\ Presentation\ \(3\).jpg") no-repeat center;
+    height: 100vh;
+    /* width: 100vw; */
+    color: #fff;
+    min-height: 500px;
+    font-family: "Ubuntu";
+  }
+  .home .max-width {
+    margin: auto 0 auto 40px;
+  }
+  /* .home .home-content {
+    height: 250px;
+  } */
+  .home .home-content .text-1 {
+    font-size: 27px;
+  }
+  .home .home-content .text-2 {
+    font-size: 75px;
+    font-weight: 600;
+    margin: -3px;
+  }
+  .home .home-content .text-3 {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 5px 0;
+  }
+  .home .home-content .text-1 span {
+    
+    color: #111;
+    font-weight: 500;
+  }
+  .home .home-content a {
+    display: inline-block;
+    color: #fff;
+    background: #3685eb;
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: solid 2px #3685eb;
+    transition: all 0.3s ease;
+  }
+  .home .home-content a:hover {
+    color: #fff;
+    background: none;
+  }
+  /* about styling */
+  section {
+    padding: 100px 0;
+  }
+  .about,
+  .demo,
+  .video,
+  .contact,
+  .footer, .form {
+    font-family: "Poppins";
+    background: url(/static/new.jpg);
+  }
+  section .title {
+    position: relative;
+    font-family: "Ubuntu";
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding: 20px;
+  }
+  .about .about-content .left img {
+    height: 400px;
+    width: 400px;
+    object-fit: contain;
+    border-radius: 20px;
+  }
+  section .title::before {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: "";
+    width: 180px;
+    height: 3px;
+    background: #111;
+    transform: translateX(-50%);
+  }
+  section .title::after {
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    font-size: 20px;
+    color: #3685eb;
+    padding: 5px;
+    background: #fff;
+    transform: translateX(-50%);
+  }
+  /* .about .title::after {
+    content: "Who I am";
+  } */
+  
+  .about .about-content,
+  .demo .demo-content,
+  .video .video-content,
+  .contact .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .about .about-content .left {
+    width: 45%;
+  }
+  .about .about-content .right {
+    width: 55%;
+  }
+  .about .about-content .right .text {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .about .about-content .right .text span {
+    color: #3685eb;
+  }
+  .about .about-content .right .text p {
+    text-align: justify;
+  }
+  .about .about-content .right a {
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    background: #3685eb;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: solid 2px #3685eb;
+    transition: all 0.3s ease;
+  }
+  .about .about-content .right a:hover {
+    color: #111;
+    background: none;
+  }
+  /* demo section */
+  .demo .title::before {
+    background-color: #fff;
+  }
+  
+  .demo {
+    background: url(/static/new.jpg);
+    color: #fff;
+  }
+  .demo .demo-content .card {
+    width: 100%;
+    background: none;
+    border: solid 3px #3685eb;
+    text-align: center;
+    border-radius: 6px;
+    padding: 20px 25px;
+    cursor: pointer;
+    transform: all 0.3s ease;
+  }
+  .demo .demo-content .card:hover {
+    background: #3685eb;
+    
+  }
+  .demo .demo-content .card .box {
+    transform: all 0.5s ease;
+  }
+  .demo .demo-content .card:hover .box {
+    transform: scale(1.05);
+  }
+  .demo .demo-content .card i {
+    font-size: 50px;
+    color: #3685eb;
+    transition: color 0.3s ease;
+  }
+  .demo .demo-content .card:hover i {
+    color: #fff;
+  }
+  .demo .demo-content .card .text {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+  }
+  /* video */
+  
+  
+
+ /*  .video .video-content .left .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .video .video-content .left p {
+    text-align: justify;
+  }
+  .video .video-content .left a {
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    background: #3685eb;
+    font-size: 15px;
+    padding: 7px 25px;
+    margin-top: 20px;
+    border-radius: 6px;
+    border: solid 2px #111;
+    transition: all 0.3s ease;
+  }
+  
+  
+  .video .video-content .right .bars {
+    margin-bottom: 15px;
+  }
+
+ 
+  .video .video-content .right .line {
+    height: 5px;
+    width: 100%;
+    background: lightgray;
+    position: relative;
+  }
+  .video .video-content .right .line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 80%;
+    left: 0;
+    top: 0;
+    background: #3685eb;
+  }
+  
+  /* .contact */
+  .contact {
+    background: url(/static/new.jpg);
+    color: #fff;
+  }
+  .contact .title::before {
+    background: #fff;
+  }
+  
+  .contact .contact-content .column {
+    width: calc(50% - 30px);
+  }
+  .contact .contact-content .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .contact .contact-content .left p {
+    text-align: justify;
+  }
+  .contact .contact-content .left .icons {
+    margin: 10px 0;
+  }
+  .contact .contact-content .row {
+    display: flex;
+    height: 65px;
+    align-items: center;
+  }
+  .contact .contact-content .row .info {
+    margin-left: 30px;
+  }
+  .contact .contact-content .row i {
+    color: #3685eb;
+    font-size: 25px;
+  }
+  .contact .contact-content .info .head {
+    font-weight: 500;
+  }
+  .contact .contact-content .info .sub-title {
+    color: rgb(212, 200, 200);
+  }
+  .contact .right form .fields {
+    display: flex;
+  }
+  .contact .right form .field input {
+    height: 100%;
+    width: 100%;
+  }
+  .contact .right form .field,
+  .contact .right form .fields .field {
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .contact .right form .name {
+    margin-right: 10px;
+  }
+  .contact .right form .email {
+    margin-left: 10px;
+  }
+  .contact .right form .field input,
+  .contact .right form .textarea textarea {
+    height: 100%;
+    width: 100%;
+    /* font-size: 18px; */
+    border: 1px solid lightgray;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  .contact .right form .textarea textarea {
+    padding-top: 10px;
+    resize: none;
+  }
+  .contact .right form .button {
+    height: 47px;
+    width: 170px;
+  }
+  .contact .right form .button button {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #3685eb;
+    background-color: #3685eb;
+    cursor: pointer;
+    transition: 0.3s ease all;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .contact .right form .button button:hover {
+    background: none;
+    color: #fff;
+  }
+  /* footer */
+  footer {
+    background: #fff;
+    padding: 20px 23px;
+    text-align: center;
+  }
+  footer span a {
+    color: #3685eb;
+  }
+  
+  /* Form */
+  .form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(/static/new.jpg);
+  }
+  .container{
+    max-width: 700px;
+    width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+  .form .container .user-details{
+    padding:15px;
+    display:flex;
+    justify-content: space-between;
+  }
+  .form .button{
+    height: 45px;
+    width:5rem;
+    margin: auto;
+    padding:auto;
+    
+  
+  }
+  .form .button input{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  }
+  .form .button input:hover{
+   /* transform: scale(0.99); */
+   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+   }
+  /*  */
+  /* responsiveness */
+  @media (max-width: 1300px) {
+    .home .max-width {
+      margin-left: 0px;
+    }
+  }
+  @media (max-width: 1104px) {
+    .about .about-content .left img {
+      height: 350px;
+      width: 350px;
+      /* object-fit: contain;
+      border-radius: 20px; */
+    }
+  }
+  @media (max-width: 990px) {
+    .home .max-width {
+      padding: 0 50px;
+    }
+  }
+  @media (max-width: 947px) {
+    .max-width {
+      padding: 0 50px;
+    }
+    .navbar .menu {
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      left: -100%;
+      top: 0;
+      background: #111;
+      text-align: center;
+      padding-top: 100px;
+      transition: all 0.3s ease;
+    }
+    .navbar .menu.active {
+      left: 0;
+    }
+    .menu-btn i.active:before {
+      content: "\f00d";
+    }
+    .navbar .menu li {
+      display: block;
+    }
+    .navbar .menu li a {
+      display: inline-block;
+      margin: 20px 0;
+      font-size: 25px;
+    }
+    .menu-btn {
+      display: inline-block;
+      z-index: 999;
+    }
+    .home .home-content .text-2 {
+      font-size: 70px;
+    }
+    .home .home-content .text-3 {
+      font-size: 35px;
+    }
+    .home .home-content a {
+      font-size: 23px;
+      padding: 10px 30px;
+    }
+    .about .about-content .column {
+      width: 100%;
+    }
+    .about .about-content .left {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 60px;
+    }
+    .about .about-content .right {
+      flex: 100%;
+    }
+    .max-width {
+      max-width: 800px;
+    }
+    .demo .demo-content .card {
+      width: calc(50% - 10px);
+      margin-bottom: 20px;
+    }
+    .video .video-content .column,
+    .contact .contact-content .column {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+    .home .home-content .text-1 {
+      font-weight: 500;
+      color:#111
+    }
+    .home .home-content .text-1 span {
+      
+      color: #111;
+     
+    }
+  }
+  @media (max-width: 690px) {
+    .max-width {
+      padding: 0 23px;
+    }
+    .home .home-content .text-2 {
+      font-size: 60px;
+    }
+    .home .home-content .text-3 {
+      font-size: 32px;
+    }
+    .home .home-content a {
+      font-size: 20px;
+    }
+    .demo .demo-content .card,
+    .video .video-content .column {
+      width: 100%;
+    }
+  }
+  @media (max-width: 500px) {
+    .home .home-content .text-2 {
+      font-size: 50px;
+    }
+    .home .home-content .text-3 {
+      font-size: 27px;
+    }
+    form .user-details .input-box{
+      margin-bottom: 15px;
+      width: 100%;
+    }
+    form .category{
+      width: 100%;
+    }
+    .content form .user-details{
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+      width: 5px;
+    }
+    .container .content .category{
+      flex-direction: column;
+    }
+  
+    
+  }
+  
+  
+    </style>
+    <script>
+      function call(){
+        alert("Demand for the {{cuisine}} for the next month is {{result}}");
+      }
+
+      $(document).ready(function () {
+  $(window).scroll(function () {
+    if (this.scrollY > 20) {
+      $(`.navbar`).addClass("sticky");
+    } else {
+      $(`.navbar`).removeClass("sticky");
+    }
+    if (this.scrollY > 100) {
+      $(`.scroll-up-btn`).addClass("show");
+    } else {
+      $(`.scroll-up-btn`).removeClass("show");
+    }
+  });
+  // slide up
+  $(".scroll-up-btn").click(function () {
+    $("html").animate({ scrollTop: 0 });
+  });
+  // toggle menu/bar
+  $(".menu-btn").click(function () {
+    $(".navbar .menu").toggleClass("active");
+    $(".menu-btn i").toggleClass("active");
+  });
+});
+
+
+
+    </script>
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+      </div>
+      <nav class="navbar">
+        <div class="max-width">
+          <div class="logo">
+            <a href="index.html">DE<span>FO</span></a>
+          </div>
+          <ul class="menu">
+            <li><a href="index.html" class="menu-btn">Home</a></li>
+            </ul>
+          <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+      </nav>
+      <section class="form">
+        <div class="container">
+            <div class="title">Demand Prediction of Cusinie</div>
+            <div class="content">
+              <form action="/predict" method="post">
+                <div class="user-details">
+                  <label class="details">Online Order </label>
+                  <select name="online_order" >
+                    <option value="">Select status(Yes/No)</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                  </div>
+                  <div class="user-details">
+                    <label class="details">Book Table </label>
+                    <select name="book_table" >
+                      <option value="">Select status(Yes/No)</option>
+                      <option value="0">No</option>
+                      <option value="1">Yes</option>
+                    </select>
+                    </div>
+                  <div class="user-details">
+                    <label class="details"> Location</label>
+                    <select name="location" >
+                      <option value="">Select Location</option>
+                      <option value="0">BTM</option>
+                      <option value="1">Banashankari</option>
+					<option value="2">Banaswadi</option>
+					<option value="3">Bannerghatta Road</option>
+					<option value="4">Basavanagudi</option>
+					<option value="5">Basaveshwara Nagar</option>
+					<option value="6">Bellandur</option>
+					<option value="7">Bommanahalli</option>
+					<option value="8">Brigade Road</option>
+					<option value="9">Brookefield</option>
+					<option value="10">CV Raman Nagar</option>
+					<option value="11">Central Bangalore</option>
+					<option value="12">Church Street</option>
+					<option value="13">City Market</option>
+					<option value="14">Commercial Street</option>
+					<option value="15">Cunningham Road</option>
+					<option value="16">Domlur</option>
+					<option value="17">East Bangalore</option>
+					<option value="18">Ejipura</option>
+					<option value="19">Electronic City</option>
+					<option value="20">Frazer Town</option>
+					<option value="21">HBR Layout</option>
+					<option value="22">HSR</option>
+					<option value="23">Hebbal</option>
+					<option value="24">Hennur</option>
+					<option value="25">Hosur Road</option>
+					<option value="26">ITPL Main Road, Whitefield</option>
+					<option value="27">Indiranagar</option>
+					<option value="28">Infantry Road</option>
+					<option value="29">JP Nagar</option>
+					<option value="30">Jalahalli</option>
+					<option value="31">Jayanagar</option>
+					<option value="32">Jeevan Bhima Nagar</option>
+					<option value="33">KR Puram</option>
+					<option value="34">Kaggadasapura</option>
+					<option value="35">Kalyan Nagar</option>
+					<option value="36">Kammanahalli</option>
+					<option value="37">Kanakapura Road</option>
+					<option value="38">Kengeri</option>
+					<option value="39">Koramangala</option>
+					<option value="40">Koramangala 1st Block</option>
+					<option value="41">Koramangala 2nd Block</option>
+					<option value="42">Koramangala 3rd Block</option>
+					<option value="43">Koramangala 4th Block</option>
+					<option value="44">Koramangala 5th Block</option>
+					<option value="45">Koramangala 6th Block</option>
+					<option value="46">Koramangala 7th Block</option>
+					<option value="47">Koramangala 8th Block</option>
+					<option value="48">Kumaraswamy Layout</option>
+					<option value="49">Langford Town</option>
+					<option value="50">Lavelle Road</option>
+					<option value="51">MG Road</option>
+					<option value="52">Magadi Road</option>
+					<option value="53">Majestic</option>
+					<option value="54">Malleshwaram</option>
+					<option value="55">Marathahalli</option>
+					<option value="56">Mysore Road</option>
+					<option value="57">Nagarbhavi</option>
+					<option value="58">Nagawara</option>
+					<option value="59">New BEL Road</option>
+					<option value="60">North Bangalore</option>
+					<option value="61">Old Airport Road</option>
+					<option value="62">Old Madras Road</option>
+					<option value="63">Peenya</option>
+					<option value="64">RT Nagar</option>
+					<option value="65">Race Course Road</option>
+					<option value="66">Rajajinagar</option>
+					<option value="67">Rajarajeshwari Nagar</option>
+					<option value="68">Rammurthy Nagar</option>
+					<option value="69">Residency Road</option>
+					<option value="70">Richmond Road</option>
+					<option value="71">Sadashiv Nagar</option>
+					<option value="72">Sahakara Nagar</option>
+					<option value="73">Sanjay Nagar</option>
+					<option value="74">Sankey Road</option>
+					<option value="75">Sarjapur Road</option>
+					<option value="76">Seshadripuram</option>
+					<option value="77">Shanti Nagar</option>
+					<option value="78">Shivajinagar</option>
+					<option value="79">South Bangalore</option>
+					<option value="80">St. Marks Road</option>
+					<option value="81">Thippasandra</option>
+					<option value="82">Ulsoor</option>
+					<option value="83">Uttarahalli</option>
+					<option value="84">Varthur Main Road, Whitefield</option>
+					<option value="85">Vasanth Nagar</option>
+					<option value="86">Vijay Nagar</option>
+					<option value="87">West Bangalore</option>
+					<option value="88">Whitefield</option>
+					<option value="89">Wilson Garden</option>
+					<option value="90">Yelahanka</option>
+					<option value="91">Yeshwantpur</option>
+                    </select>
+                    </div>
+                   
+                      <div class="user-details">
+                        <label class="details">Restaurant Type</label>
+                        <select name="rest_type" >
+                          <option value="">Select rest type</option>
+                          <option value="0">Bakery</option>
+                          <option value="1">Bakery, Beverage Shop</option>
+                          <option value="2">Bakery, Cafe</option>
+                          <option value="3">Bakery, Dessert Parlor</option>
+                          <option value="4">Bakery, Food Court</option>
+                          <option value="5">Bakery, Quick Bites</option>
+                          <option value="6">Bar</option>
+                          <option value="7">Bar, Casual Dining</option>
+                          <option value="8">Bar, Lounge</option>
+                          <option value="9">Bar, Pub</option>
+                          <option value="10">Bar, Quick Bites</option>
+                          <option value="11">Beverage Shop</option>
+                          <option value="12">Beverage Shop, Cafe</option>
+                          <option value="13">Beverage Shop, Dessert Parlor</option>
+                          <option value="14">Beverage Shop, Quick Bites</option>
+                          <option value="15">Bhojanalya</option>
+                          <option value="16">Cafe</option>
+                          <option value="17">Cafe, Bakery</option>
+                          <option value="18">Cafe, Bar</option>
+                          <option value="19">Cafe, Casual Dining</option>
+                          <option value="20">Cafe, Dessert Parlor</option>
+                          <option value="21">Cafe, Food Court</option>
+                          <option value="22">Cafe, Lounge</option>
+                          <option value="23">Cafe, Quick Bites</option>
+                          <option value="24">Casual Dining</option>
+                          <option value="25">Casual Dining, Bar</option>
+                          <option value="26">Casual Dining, Cafe</option>
+                          <option value="27">Casual Dining, Irani Cafee</option>
+                          <option value="28">Casual Dining, Lounge</option>
+                          <option value="29">Casual Dining, Microbrewery</option>
+                          <option value="30">Casual Dining, Pub</option>
+                          <option value="31">Casual Dining, Quick Bites</option>
+                          <option value="32">Casual Dining, Sweet Shop</option>
+                          <option value="33">Club</option>
+                          <option value="34">Club, Casual Dining</option>
+                          <option value="35">Confectionery</option>
+                          <option value="36">Delivery</option>
+                          <option value="37">Dessert Parlor</option>
+                          <option value="38">Dessert Parlor, Bakery</option>
+                          <option value="39">Dessert Parlor, Beverage Shop</option>
+                          <option value="40">Dessert Parlor, Cafe</option>
+                          <option value="41">Dessert Parlor, Food Court</option>
+                          <option value="42">Dessert Parlor, Kiosk</option>
+                          <option value="43">Dessert Parlor, Quick Bites</option>
+                          <option value="44">Dessert Parlor, Sweet Shop</option>
+                          <option value="45">Dhaba</option>
+                          <option value="46">Fine Dining</option>
+                          <option value="47">Fine Dining, Bar</option>
+                          <option value="48">Fine Dining, Lounge</option>
+                          <option value="49">Fine Dining, Microbrewery</option>
+                          <option value="50">Food Court</option>
+                          <option value="51">Food Court, Beverage Shop</option>
+                          <option value="52">Food Court, Casual Dining</option>
+                          <option value="53">Food Court, Dessert Parlor</option>
+                          <option value="54">Food Court, Quick Bites</option>
+                          <option value="55">Food Truck</option>
+                          <option value="56">Kiosk</option>
+                          <option value="57">Lounge</option>
+                          <option value="58">Lounge, Bar</option>
+                          <option value="59">Lounge, Cafe</option>
+                          <option value="60">Lounge, Casual Dining</option>
+                          <option value="61">Lounge, Microbrewery</option>
+                          <option value="62">Mess</option>
+                          <option value="63">Microbrewery</option>
+                          <option value="64">Microbrewery, Bar</option>
+                          <option value="65">Microbrewery, Casual Dining</option>
+                          <option value="66">Microbrewery, Lounge</option>
+                          <option value="67">Microbrewery, Pub</option>
+                          <option value="68">Pub</option>
+                          <option value="69">Pub, Bar</option>
+                          <option value="70">Pub, Cafe</option>
+                          <option value="71">Pub, Casual Dining</option>
+                          <option value="72">Pub, Microbrewery</option>
+                          <option value="73">Quick Bites</option>
+                          <option value="74">Quick Bites, Bakery</option>
+                          <option value="75">Quick Bites, Beverage Shop</option>
+                          <option value="76">Quick Bites, Cafe</option>
+                          <option value="77">Quick Bites, Dessert Parlor</option>
+                          <option value="78">Quick Bites, Food Court</option>
+                          <option value="79">Quick Bites, Kiosk</option>
+                          <option value="80">Quick Bites, Meat Shop</option>
+                          <option value="81">Quick Bites, Mess</option>
+                          <option value="82">Quick Bites, Sweet Shop</option>
+                          <option value="83">Sweet Shop</option>
+                          <option value="84">Sweet Shop, Quick Bites</option>
+                          <option value="85">Takeaway</option>
+                          <option value="86">Takeaway, Delivery</option>
+                        </select>
+                        </div>
+                        <div class="user-details">
+                    <span class="details">Votes</span>
+                    <input type="text" name="votes" val="" required>
+                  </div>
+                  <div class="user-details">
+                    <span class="details">Aproximate Cost of two people</span>
+                    <input type="text" name="approx_cost" val="" required>
+                  </div>
+                
+                <div class="user-details">
+                  <label class="details"> Cuisine</label>
+                  <select name="cuisine" >
+                    <option value="0">North Indian</option>
+                    <option value="1"> Mughlai</option>
+                    <option value="2"> Chinese</option>
+                    <option value="3">Chinese</option>
+                    <option value="4"> North Indian</option>
+                    <option value="5"> Thai</option>
+                    <option value="6">Cafe</option>
+                    <option value="7"> Mexican</option>
+                    <option value="8"> Italian</option>
+                    <option value="9">South Indian</option>
+                    <option value="10"> Rajasthani</option>
+                    <option value="11"> South Indian</option>
+                    <option value="12"> Andhra</option>
+                    <option value="13">Pizza</option>
+                    <option value="14"> Cafe</option>
+                    <option value="15"> Continental</option>
+                    <option value="16"> Momos</option>
+                    <option value="17"> Beverages</option>
+                    <option value="18"> Fast Food</option>
+                    <option value="19"> American</option>
+                    <option value="20"> French</option>
+                    <option value="21"> Pizza</option>
+                    <option value="22">Italian</option>
+                    <option value="23"> European</option>
+                    <option value="24"> Bakery</option>
+                    <option value="25"> Burger</option>
+                    <option value="26">Bakery</option>
+                    <option value="27"> Desserts</option>
+                    <option value="28"> Biryani</option>
+                    <option value="29">Biryani</option>
+                    <option value="30">Street Food</option>
+                    <option value="31">Burger</option>
+                    <option value="32"> Rolls</option>
+                    <option value="33">Fast Food</option>
+                    <option value="34"> Street Food</option>
+                    <option value="35">Ice Cream</option>
+                    <option value="36">Healthy Food</option>
+                    <option value="37"> Salad</option>
+                    <option value="38">Asian</option>
+                    <option value="39"> Korean</option>
+                    <option value="40"> Indonesian</option>
+                    <option value="41"> Japanese</option>
+                    <option value="42">Desserts</option>
+                    <option value="43">Goan</option>
+                    <option value="44"> Seafood</option>
+                    <option value="45"> Kebab</option>
+                    <option value="46">Continental</option>
+                    <option value="47"> Steak</option>
+                    <option value="48">Seafood</option>
+                    <option value="49">Beverages</option>
+                    <option value="50"> Ice Cream</option>
+                    <option value="51">Mithai</option>
+                    <option value="52"> Iranian</option>
+                    <option value="53"> Sandwich</option>
+                    <option value="54">Sandwich</option>
+                    <option value="55">Mangalorean</option>
+                    <option value="56"> Juices</option>
+                    <option value="57"> Mithai</option>
+                    <option value="58">Thai</option>
+                    <option value="59"> Vietnamese</option>
+                    <option value="60"> Asian</option>
+                    <option value="61">Salad</option>
+                    <option value="62"> Healthy Food</option>
+                    <option value="63"> Hyderabadi</option>
+                    <option value="64">Bengali</option>
+                    <option value="65">Arabian</option>
+                    <option value="66">BBQ</option>
+                    <option value="67"> Arabian</option>
+                    <option value="68"> BBQ</option>
+                    <option value="69">Vietnamese</option>
+                    <option value="70">Andhra</option>
+                    <option value="71"> Mangalorean</option>
+                    <option value="72"> Tea</option>
+                    <option value="73">Juices</option>
+                    <option value="74"> Afghani</option>
+                    <option value="75">Mexican</option>
+                    <option value="76">Rolls</option>
+                    <option value="77"> Lebanese</option>
+                    <option value="78"> Finger Food</option>
+                    <option value="79">Tibetan</option>
+                    <option value="80">Tea</option>
+                    <option value="81">Momos</option>
+                    <option value="82"> Tibetan</option>
+                    <option value="83"> Charcoal Chicken</option>
+                    <option value="84">Hyderabadi</option>
+                    <option value="85">Finger Food</option>
+                    <option value="86">Mughlai</option>
+                    <option value="87">Kebab</option>
+                    <option value="88"> Middle Eastern</option>
+                    <option value="89"> Mediterranean</option>
+                    <option value="90"> Wraps</option>
+                    <option value="91">Kerala</option>
+                    <option value="92"> Kerala</option>
+                    <option value="93">Oriya</option>
+                    <option value="94"> Bihari</option>
+                    <option value="95"> Roast Chicken</option>
+                    <option value="96">Maharashtrian</option>
+                    <option value="97">Bohri</option>
+                    <option value="98">African</option>
+                    <option value="99">American</option>
+                    <option value="100"> Bengali</option>
+                    <option value="101">Rajasthani</option>
+                    <option value="102"> Nepalese</option>
+                    <option value="103">Turkish</option>
+                    <option value="104">Tamil</option>
+                    <option value="105"> Tex-Mex</option>
+                    <option value="106"> Belgian</option>
+                    <option value="107"> Gujarati</option>
+                    <option value="108">Roast Chicken</option>
+                    <option value="109">Gujarati</option>
+                    <option value="110">South American</option>
+                    <option value="111"> Oriya</option>
+                    <option value="112">Konkan</option>
+                    <option value="113">European</option>
+                    <option value="114"> Chettinad</option>
+                    <option value="115"> Coffee</option>
+                    <option value="116"> Turkish</option>
+                    <option value="117"> Indian</option>
+                    <option value="118"> Maharashtrian</option>
+                    <option value="119">Lebanese</option>
+                    <option value="120"> Afghan</option>
+                    <option value="121"> Modern Indian</option>
+                    <option value="122"> Goan</option>
+                    <option value="123"> Lucknowi</option>
+                    <option value="124">Japanese</option>
+                    <option value="125">Modern Indian</option>
+                    <option value="126">Bihari</option>
+                    <option value="127">Australian</option>
+                    <option value="128">Mediterranean</option>
+                    <option value="129">Spanish</option>
+                    <option value="130"> Malaysian</option>
+                    <option value="131"> Burmese</option>
+                    <option value="132"> Sushi</option>
+                    <option value="133">Portuguese</option>
+                    <option value="134"> African</option>
+                    <option value="135">Parsi</option>
+                    <option value="136">Steak</option>
+                    <option value="137">Nepalese</option>
+                    <option value="138"> Greek</option>
+                    <option value="139">Burmese</option>
+                    <option value="140">North Eastern</option>
+                    <option value="141">Chettinad</option>
+                    <option value="142"> Bar Food</option>
+                    <option value="143"> Konkan</option>
+                    <option value="144"> Spanish</option>
+                    <option value="145"> Singaporean</option>
+                    <option value="146">Awadhi</option>
+                    <option value="147"> Naga</option>
+                    <option value="148">Korean</option>
+                    <option value="149"> Cantonese</option>
+                    <option value="150">Malaysian</option>
+                    <option value="151"> Grill</option>
+                    <option value="152">Sushi</option>
+                    <option value="153"> Bubble Tea</option>
+                    <option value="154">Lucknowi</option>
+                    <option value="155"> Hot dogs</option>
+                    <option value="156">Kashmiri</option>
+                    <option value="157">French</option>
+                    <option value="158"> Assamese</option>
+                    <option value="159"> Awadhi</option>
+                    <option value="160">Assamese</option>
+                    <option value="161">Coffee</option>
+                    <option value="162"> Sri Lankan</option>
+                    <option value="163"> Mongolian</option>
+                    <option value="164"> Parsi</option>
+                    <option value="165">Charcoal Chicken</option>
+                    <option value="166"> North Eastern</option>
+                    <option value="167">Bar Food</option>
+                    <option value="168"> British</option>
+                    <option value="169">Singaporean</option>
+                    <option value="170">Middle Eastern</option>
+                    <option value="171">Naga</option>
+                    <option value="172"> Pan Asian</option>
+                    <option value="173"> Paan</option>
+                    <option value="174"> German</option>
+                    <option value="175"> Kashmiri</option>
+                    <option value="176">Russian</option>
+                    <option value="177">Drinks Only</option>
+                    <option value="178"> Drinks Only</option>
+                    <option value="179"> Jewish</option>
+                    <option value="180"> Vegan</option>
+                    <option value="181">Iranian</option>
+                    <option value="182"> Raw Meats</option>
+                    <option value="183"> Sindhi</option>
+                    <option value="184">German</option>
+                    <option value="185"> South American</option>
+                    <option value="186">British</option>
+                  </select>
+                  </div>
+                  <div class="user-details">
+                <div class="button">
+                  <input type="submit" onclick="call()" value="submit">
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        
+      </section>
+   
+</body>
+<p style="color:black"> Demand on scale of 100: {{result}} </p>
+
+
+<script src="script.js"></script>
+</html>
