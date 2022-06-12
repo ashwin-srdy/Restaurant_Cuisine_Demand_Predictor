@@ -13,4 +13,8 @@ This project is implemented using ML to predict the demand of the given dataset 
 Time Series predictions can be done on the data for more accurate understanding and better accuracy.
 
 # DEPLOYMENT LINK: https://cruisnien.herokuapp.com/
-  
+# TECH STACK
+*Front End: HTML5, CSS, JavaScript
+*Visualisation and modeling tools: Jupyter notebook, python
+*ML modules: Scikit-Learn
+*Git, OBS, pickle, Heroku Cloud, GitHub
