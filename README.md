@@ -1,5 +1,5 @@
 <h1><b>DEFO</b>, A Restaurant_Cuisine_Demand_Predictor </h1>
-[<div class="tenor-gif-embed" data-postid="22055455" data-share-method="host" data-aspect-ratio="0.75625" data-width="100%"><a href="https://tenor.com/view/burger-burgir-burgiir-hamburger-gif-22055455">Burger Burgir GIF</a>from <a href="https://tenor.com/search/burger-gifs">Burger GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>](https://tenor.com/bEHNj.gif)
+![image](https://user-images.githubusercontent.com/66512139/173221884-0d381fae-b05e-4fe5-8baa-2c9164a56418.png)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 This project is implemented using ML to predict the demand of the given dataset concerned with reviews of customers of a food company. The data was analysed using python and certain trends, findings were discovered in the process. Three ML models were trained namely <b>Random Forest regressor, XGB Regressor, Extra Trees Regressor</b>. Extra Trees Regressor shows highest r2_score with Random Forest regressor following it.
