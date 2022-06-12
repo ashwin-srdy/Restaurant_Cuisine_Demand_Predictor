@@ -12,6 +12,5 @@ This project is implemented using ML to predict the demand of the given dataset 
 ## Future Scope:
 Time Series predictions can be done on the data for more accurate understanding and better accuracy.
 
-
-
+# DEPLOYMENT LINK: https://cruisnien.herokuapp.com/
   
