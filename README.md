@@ -24,10 +24,14 @@ Time Series predictions can be done on the data for more accurate understanding 
 
 # Built With 
 
-* [HTML5](gtml.com)
-* Visualisation and modeling tools: Jupyter notebook, python
-* ML modules: Scikit-Learn
-* Git, OBS, pickle, Heroku Cloud, GitHub
+* [HTML5](html.com)
+* [Jupyter notebook](https://jupyter.org/)
+* [python](https://www.python.org/)
+* [Scikit-Learn](https://scikit-learn.org/stable/)
+* [Git](https://git-scm.com/)
+* [pickle](https://docs.python.org/3/library/pickle.html) 
+* [Heroku Cloud](heroku.com)
+* [GitHub](github.com)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 
