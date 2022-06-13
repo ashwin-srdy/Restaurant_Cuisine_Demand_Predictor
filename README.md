@@ -3,6 +3,8 @@
 
 This project is implemented using ML to predict the demand of the given dataset concerned with reviews of customers of a food company. The data was analysed using python and certain trends, findings were discovered in the process. Three ML models were trained namely <b>Random Forest regressor, XGB Regressor, Extra Trees Regressor</b>. Extra Trees Regressor shows highest r2_score with Random Forest regressor following it.
 
+<img src="https://tenor.com/bEHNj.gif">
+
 <h2>ALGORITHMS r2_scores: </h2>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <ul>
